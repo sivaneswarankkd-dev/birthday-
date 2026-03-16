@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>For Someone Special ❤️</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Dancing Script", cursive;
+      background: linear-gradient(135deg, #ffd6e0, #ffecec);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* floating hearts */
+
+    .heart {
+      position: fixed;
+      font-size: 22px;
+      animation: fall linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      from {
+        transform: translateY(-10vh)
+      }
+
+      to {
+        transform: translateY(110vh)
+      }
+    }
+
+    /* section layout */
+
+    .section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    /* card */
+
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      width: 90%;
+    }
+
+    /* button */
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: .3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    /* input */
+
+    input {
+      padding: 10px;
+      border-radius: 20px;
+      border: 1px solid #ccc;
+      margin-top: 10px;
+      width: 200px;
+      text-align: center;
+    }
+
+    /* typing text */
+
+    .typing {
+      font-size: 1.4em;
+      color: #c2185b;
+      margin-top: 20px;
+      min-height: 60px;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      /* 3 columns */
+      grid-template-rows: repeat(2, 250px);
+      /* 2 rows fixed height */
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px;
+    }
+
+    .photo {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 18px;
+      transition: 0.4s;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      font-size: 18px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      transition: 0.4s;
+    }
+
+    .photo:hover img {
+      transform: scale(1.1);
+    }
+
+    .photo:hover .overlay {
+      opacity: 1;
+    }
+
+    /* tablet */
+
+    @media(max-width:768px) {
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* phone */
+
+    @media(max-width:480px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MUSIC -->
+
+  <audio id="music" loop>
+    <source src="./images/16_03_26_04_29_15.mp3.mpeg" type="audio/mpeg">
+  </audio>
+
+  <!-- FLOATING HEARTS -->
+
+  <script>
+
+    for (let i = 0; i < 30; i++) {
+
+      let heart = document.createElement("div");
+
+      heart.innerHTML = "💖";
+      heart.className = "heart";
+
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+
+      document.body.appendChild(heart);
+
+    }
+
+  </script>
+
+  <!-- PASSWORD -->
+
+  <div class="section" id="lock">
+
+    <div class="card">
+
+      <h2>Enter the Secret ❤️</h2>
+
+      <input type="password" id="pass" placeholder="Enter password">
+
+      <br>
+
+      <button onclick="unlock()">Open Surprise</button>
+
+    </div>
+
+  </div>
+
+  <!-- HOME -->
+
+  <div class="section hidden" id="home">
+
+    <h1>Happy Birthday Nandhu 💖</h1>
+
+    <div class="typing" id="typing"></div>
+
+    <button onclick="showGallery()">Our Memories 📸</button>
+
+  </div>
+
+  <!-- GALLERY -->
+
+
+  <div class="section hidden" id="gallery">
+
+    <h2>Our Beautiful Memories ❤️</h2>
+
+    <div class="gallery">
+
+      <div class="photo">
+        <img src="images/Imge_1.jpeg">
+        <div class="overlay">Our First Photo ❤️</div>
+      </div>
+
+      <div class="photo">
+        <img src="./images/Imge_2.jpeg">
+        <div class="overlay">Always Together 💕</div>
+      </div>
+
+      <div class="photo">
+        <img src="./images/Imge_3.jpeg">
+        <div class="overlay">My Favorite Moment ✨</div>
+      </div>
+
+      <div class="photo">
+        <img src="./images/Imge_4.jpeg">
+        <div class="overlay">Forever Us 💞</div>
+      </div>
+
+      <div class="photo">
+        <img src="./images/Imge_5.jpeg">
+        <div class="overlay">Memories 📸</div>
+      </div>
+
+      <div class="photo">
+        <img src="./images/Imge_6.jpeg">
+        <div class="overlay">My Whole World ❤️</div>
+      </div>
+
+    </div>
+
+  </div>
+  <button onclick="showMessage()">Special Message 💌</button>
+
+  </div>
+
+  <!-- MESSAGE -->
+
+  <div class="section hidden" id="message">
+
+    <div class="card">
+
+      <h2>A Message From My Heart</h2>
+
+      <p>
+
+        Happy Birthday special one 🧿🌏🫶🏼💎 
+
+On this special day, I just want to remind you how much you mean to me.
+You are not just a part of my life, you are the most beautiful reason behind my smiles and happiness.
+
+Every moment with you is a memory I treasure deeply.
+Your love, your care, and the way you understand me makes my life so much brighter.
+
+I am truly grateful to have you in my life, and I promise to always stand beside you, support you, and love you more with every passing day.
+
+May your birthday be filled with happiness, laughter, and all the beautiful things you deserve.
+And may our journey together continue to grow stronger and more wonderful every single day.
+
+Happy Birthday once again, Nandhu.
+You are my today, my tomorrow, and my forever. ❤️
+
+    </div>
+
+  </div>
+
+  <script>
+
+    /* unlock */
+
+    function unlock() {
+
+      if (pass.value === "2118") {
+
+        lock.classList.add("hidden");
+
+        home.classList.remove("hidden");
+
+        music.play();
+
+        typeText();
+
+      }
+
+      else {
+
+        alert("Wrong password ❤️");
+
+      }
+
+    }
+
+    /* typing */
+
+    const text = "You make my world brighter every single day...";
+
+    let i = 0;
+
+    function typeText() {
+
+      if (i < text.length) {
+
+        typing.innerHTML += text.charAt(i);
+
+        i++;
+
+        setTimeout(typeText, 50);
+
+      }
+
+    }
+
+    /* navigation */
+
+    function showGallery() {
+
+      home.classList.add("hidden");
+
+      gallery.classList.remove("hidden");
+
+    }
+
+    function showMessage() {
+
+      gallery.classList.add("hidden");
+
+      message.classList.remove("hidden");
+
+    }
+
+  </script>
+
+</body>
+
+</html>
